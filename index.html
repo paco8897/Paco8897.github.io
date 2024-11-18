@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final - Programación III</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+        img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Canciones</h1>
+    <button onclick="agregarCancion1()">Canción 1</button>
+    <button onclick="agregarCancion2()">Canción 2</button>
+    <button onclick="agregarCancion3()">Canción 3</button>
+    <button onclick="agregarCancion4()">Canción 4</button>
+    <button onclick="agregarCancion5()">Canción 5</button>
+    <button onclick="agregarCancion6()">Canción 6</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre Canción</th>
+                <th>Artista</th>
+                <th>Género</th>
+                <th>Duración</th>
+                <th>Imagen del Artista</th>
+            </tr>
+        </thead>
+        <tbody id="tablaDatos">
+        </tbody>
+    </table>
+
+    <footer style="margin-top: 20px;">
+        <p><strong>Nombre completo:</strong> Francisco Javier Dominguez Castro</p>
+        <p><strong>Correo electrónico:</strong> Francisco.Dominguez2847@alumnos.udg.mx</p>
+        <p><strong>Preparatoria:</strong> Preparatoria San José del Valle</p>
+        <p><strong>Materia:</strong> Programación III</p>
+        <p><strong>Profesor:</strong> Angel Emmanuel Sanchez Cuenca</p>
+        <p><strong>&copy; Todos los derechos reservados</strong></p>
+    </footer>
+
+    <script>
+        var datos = [];
+
+        function muestraDatos() {
+            var tabla = document.getElementById('tablaDatos');
+            tabla.innerHTML = "";
+            for (var i = 0; i < datos.length; i++) {
+                var fila = `<tr>
+                                <td>${datos[i].nombreCancion}</td>
+                                <td>${datos[i].nombreArtista}</td>
+                                <td>${datos[i].genero}</td>
+                                <td>${datos[i].duracion}</td>
+                                <td>${datos[i].imagenArtista}</td>
+                            </tr>`;
+                tabla.innerHTML += fila;
+            }
+        }
+
+        function agregarCancion1() {
+            var cancion1 = {
+                nombreCancion: "Wake up & Bake up",
+                nombreArtista: "Duki, Wiz Khalifa, Arcangel",
+                genero: "Hip Hop",
+                duracion: "3:26",
+                imagenArtista: '<img src="https://images.genius.com/ae54d98aa01497d7940aec88de6e39c4.1000x1000x1.png">'
+            };
+            datos.push(cancion1);
+            muestraDatos();
+        }
+
+        function agregarCancion2() {
+            var cancion2 = {
+                nombreCancion: "Hablando de Love",
+                nombreArtista: "Tiago PZK",
+                genero: "Pop",
+                duracion: "2:36",
+                imagenArtista: '<img src="https://i.scdn.co/image/ab6761610000e5eb5b0e948da3420afdd1cd84ef">'
+            };
+            datos.push(cancion2);
+            muestraDatos();
+        }
+
+        function agregarCancion3() {
+            var cancion3 = {
+                nombreCancion: "EME",
+                nombreArtista: "NSQK",
+                genero: "Indie",
+                duracion: "2:27",
+                imagenArtista: '<img src="https://www.mehaceruido.com/wp-content/uploads/2022/12/nsqk-1.jpg">'
+            };
+            datos.push(cancion3);
+            muestraDatos();
+        }
+
+        function agregarCancion4() {
+            var cancion4 = {
+                nombreCancion: "Estrella",
+                nombreArtista: "Dani Ribba",
+                genero: "Rap",
+                duracion: "2:22",
+                imagenArtista: '<img src="https://cdn-images.dzcdn.net/images/cover/014f44b435a2734c058ac0b30cfb8165/1900x1900-000000-80-0-0.jpg">'
+            };
+            datos.push(cancion4);
+            muestraDatos();
+        }
+
+        function agregarCancion5() {
+            var cancion5 = {
+                nombreCancion: "Vida de rock",
+                nombreArtista: "Milo J, DUKI",
+                genero: "Rock",
+                duracion: "3:01",
+                imagenArtista: '<img src="https://http2.mlstatic.com/D_NQ_NP_718656-MLM70980240305_082023-O.webp">'
+            };
+            datos.push(cancion5);
+            muestraDatos();
+        }
+
+        function agregarCancion6() {
+            var cancion6 = {
+                nombreCancion: "Memorias",
+                nombreArtista: "Mora, JHAYCO",
+                genero: "Reggaeton",
+                duracion: "3:48",
+                imagenArtista: '<img src="https://www.telemundo.com/sites/nbcutelemundo/files/styles/social_share_1024x768_scale/public/images/article/cover/2021/09/07/mora_1.jpg?ramen_itok=iqwQftIcTf">'
+            };
+            datos.push(cancion6);
+            muestraDatos();
+        }
+    </script>
+</body>
+</html>
