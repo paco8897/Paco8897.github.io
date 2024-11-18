@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <title>Proyecto Final - Programación III</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            margin: auto;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+
+        audio {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Canciones</h1>
+
+    <button onclick="cargarCancion('cancion1')">Canción 1</button>
+    <button onclick="cargarCancion('cancion2')">Canción 2</button>
+    <button onclick="cargarCancion('cancion3')">Canción 3</button>
+    <button onclick="cargarCancion('cancion4')">Canción 4</button>
+    <button onclick="cargarCancion('cancion5')">Canción 5</button>
+    <button onclick="cargarCancion('cancion6')">Canción 6</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre Canción</th>
+                <th>Artista</th>
+                <th>Género</th>
+                <th>Duración</th>
+                <th>Imagen del Artista</th>
+            </tr>
+        </thead>
+        <tbody id="tablaDatos">
+        </tbody>
+    </table>
+
+    <!-- Reproductor de audio-->
+    <audio id="audioPlayer" controls>
+        <source id="audioSource" src="" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <footer>
+        <p><strong>Nombre completo:</strong> Francisco Javier Dominguez Castro</p>
+        <p><strong>Correo electrónico:</strong> Francisco.Dominguez2847@alumnos.udg.mx</p>
+        <p><strong>Preparatoria:</strong> Preparatoria San José del Valle</p>
+        <p><strong>Materia:</strong> Programación III</p>
+        <p><strong>Profesor:</strong> Angel Emmanuel Sanchez Cuenca</p>
+        <p><strong>&copy; Todos los derechos reservados</strong></p>
+    </footer>
+
+    <script>
+        var canciones = {
+            cancion1: {
+                nombreCancion: "Wake up & Bake up",
+                nombreArtista: "Duki, Wiz Khalifa, Arcangel",
+                genero: "Hip Hop",
+                duracion: "3:26",
+                imagenArtista: '<img src="https://images.genius.com/ae54d98aa01497d7940aec88de6e39c4.1000x1000x1.png">',
+                archivoAudio: "audios/cancion1.mp3"
+            },
+            cancion2: {
+                nombreCancion: "Hablando de Love",
+                nombreArtista: "Tiago PZK",
+                genero: "Pop",
+                duracion: "2:36",
+                imagenArtista: '<img src="https://i.scdn.co/image/ab6761610000e5eb5b0e948da3420afdd1cd84ef">',
+                archivoAudio: "audios/cancion2.mp3"
+            },
+            cancion3: {
+                nombreCancion: "EME",
+                nombreArtista: "NSQK",
+                genero: "Indie",
+                duracion: "2:27",
+                imagenArtista: '<img src="https://www.mehaceruido.com/wp-content/uploads/2022/12/nsqk-1.jpg">',
+                archivoAudio: "audios/cancion3.mp3"
+            },
+            cancion4: {
+                nombreCancion: "Estrella",
+                nombreArtista: "Dani Ribba",
+                genero: "Rap",
+                duracion: "2:22",
+                imagenArtista: '<img src="https://cdn-images.dzcdn.net/images/cover/014f44b435a2734c058ac0b30cfb8165/1900x1900-000000-80-0-0.jpg">',
+                archivoAudio: "audios/cancion4.mp3"
+            },
+            cancion5: {
+                nombreCancion: "Vida de rock",
+                nombreArtista: "Milo J, DUKI",
+                genero: "Rock",
+                duracion: "3:01",
+                imagenArtista: '<img src="https://http2.mlstatic.com/D_NQ_NP_718656-MLM70980240305_082023-O.webp">',
+                archivoAudio: "audios/cancion5.mp3"
+            },
+            cancion6: {
+                nombreCancion: "Memorias",
+                nombreArtista: "Mora, JHAYCO",
+                genero: "Reggaeton",
+                duracion: "3:48",
+                imagenArtista: '<img src="https://www.telemundo.com/sites/nbcutelemundo/files/styles/social_share_1024x768_scale/public/images/article/cover/2021/09/07/mora_1.jpg?ramen_itok=iqwQftIcTf">',
+                archivoAudio: "audios/cancion6.mp3"
+            }
+        };
+
+        // audio
+        function cargarCancion(cancionKey) {
+            var cancion = canciones[cancionKey];
+
+            var tabla = document.getElementById('tablaDatos');
+            var fila = `
+                <tr>
+                    <td>${cancion.nombreCancion}</td>
+                    <td>${cancion.nombreArtista}</td>
+                    <td>${cancion.genero}</td>
+                    <td>${cancion.duracion}</td>
+                    <td>${cancion.imagenArtista}</td>
+                </tr>
+            `;
+            tabla.innerHTML += fila;
+
+            
+            var audioPlayer = document.getElementById('audioPlayer');
+            var audioSource = document.getElementById('audioSource');
+            audioSource.src = cancion.archivoAudio;
+
+            audioPlayer.load();
+        }
+    </script>
+
+</body>
+</html>
